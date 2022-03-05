@@ -14,7 +14,7 @@
 <body>
 
 	<div id="inicio" class="container-fluid table mt-5" style="text-align:center" >
-		<h4>Lista dos Funcionários</h4>
+		<h4>Lista dos Funcionários</h4><br>
 		<table class="table">
 		  <tr class="table-light">
 			<th>Nome</th>
@@ -26,7 +26,7 @@
 			<th></th>
 			<th></th>
 		  </tr>
-		  <tbody id="event-table" >
+		  <tbody id="event-table">
 			<tr v-for="funcionario in lista">
 			  <td>{{ funcionario.nome }}</td>
 			  <td>{{ funcionario.setor.nome }}</td>

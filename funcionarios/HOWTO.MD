@@ -19,6 +19,8 @@ NOME VARCHAR(30)
 
 Foi utilizado o Tomcat v9.0.48 no eclipse para testes no servidor.
 
-Deve-se executar o servidor a ser utilizado e acessar a url no navegador http://localhost:8080/funcionarios/
+Deve-se executar o servidor a ser utilizado e acessar a url no navegador http://localhost:8080/funcionarios/rs/funcionarios
 
-Os testes poder„o ser feitos atraves do arquivo com.hepta.funcionarios.test.FuncionarioServiceTest.java com JUnit.
+Os testes poder√£o ser feitos atraves do arquivo com.hepta.funcionarios.test.FuncionarioServiceTest.java com JUnit.
+
+Execute o front end index.html com o Open with live Server do visual Studio Code.

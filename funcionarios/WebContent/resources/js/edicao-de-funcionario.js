@@ -32,6 +32,7 @@ var atualizacao = new Vue({
             const id = window.location.href.split("?").pop();
             axios.get(`http://localhost:8080/funcionarios/rs/funcionarios/${id}`)
                 .then(response => { vm.funcionario = response.data;
+                vm.editarFunc();
                 }).catch(function (error) {
                 
             })
@@ -48,6 +49,5 @@ var atualizacao = new Vue({
                 })
         },
        
-
     }
 })

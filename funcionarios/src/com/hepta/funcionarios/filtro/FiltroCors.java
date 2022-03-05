@@ -26,9 +26,9 @@ public class FiltroCors implements Filter {
             throws IOException, ServletException {
 
         ((HttpServletResponse) response).setHeader("Access-Control-Allow-Origin", "*");
-        ((HttpServletResponse) response).setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        ((HttpServletResponse) response).setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Origin");
         ((HttpServletResponse) response).setHeader("Access-Control-Allow-Methods",
-                "POST , GET , PUT,  DELETE , OPTIONS");
+                "POST , GET , PUT,  DELETE , OPTIONS, PATCH");
         
         ((HttpServletResponse) response).setContentType("application/json");
         Map<String, String[]> parameterMap = ((HttpServletRequest) request)
