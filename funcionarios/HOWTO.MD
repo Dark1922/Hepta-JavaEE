@@ -23,4 +23,8 @@ Deve-se executar o servidor a ser utilizado e acessar a url no navegador http://
 
 Os testes poderão ser feitos atraves do arquivo com.hepta.funcionarios.test.FuncionarioServiceTest.java com JUnit.
 
+Caso deia algum error de cors segue as instruções:
+https://stackoverflow.com/questions/35588699/response-to-preflight-request-doesnt-pass-access-control-check
+https://stackoverflow.com/questions/58009038/eclipse-4-12-java-lang-classnotfoundexception-com-sun-xml-internal-bind-v2-co
+
 Execute o front end index.html com o Open with live Server do visual Studio Code.

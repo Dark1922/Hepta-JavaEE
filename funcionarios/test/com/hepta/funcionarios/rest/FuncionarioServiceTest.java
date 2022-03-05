@@ -1,7 +1,9 @@
 package com.hepta.funcionarios.rest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import javax.ws.rs.core.Response.Status;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -92,6 +94,15 @@ class FuncionarioServiceTest {
 		
 	}
 	
-	
+	@Test
+    public void deveFalharAoInformarDadosInvalidos() {
+		FuncionarioService service = new FuncionarioService();
+		
+		try {
+			service.FuncionarioCreate(null);
+		} catch (Exception e) {
+			fail (e.toString());
+		}
+    }
 
 }
