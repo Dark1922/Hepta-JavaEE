@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<title>Cadastro de Funcionário </title>
+	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
+
+</head>
+
+<body>
+<form id="formFuncionario" class="was-validated" >
+	
+	<div class="container">
+		<div class="row" >
+
+			<div id="cadastro" class="col-md-11 main">
+				<h4 class="mt-5" style="text-align:center">Cadastro de funcionário</h4>
+				<div class="form-group" >
+					<label class="control-label">Nome</label>
+					<input type="text" class="form-control"  name="nome" v-model="funcionario.nome" required >
+				</div>
+				<div class="form-group"  >
+				<label class="control-label">Setor</label>
+				<select class="form-select form-control" name="setor" required v-model="funcionario.setor.id">
+				        <option selected="selected"></option>
+						<option v-for="setor in setores" v-bind:value="setor.id">{{ setor.nome }}</option>
+                   </select>
+                   </div>
+				<div class="form-group">
+					<label class="control-label">Salario</label>
+					<input type="number" class="form-control" name="salario" v-model="funcionario.salario" min="0.00"
+						max="100000.00" step="0.01" required >
+				</div>
+				<div class="form-group">
+					<label class="control-label">Email</label>
+					<input type="email" class="form-control" name="email" v-model="funcionario.email" required >
+				</div>
+				<div class="form-group">
+					<label class="control-label">Idade</label>
+					<input type="number" class="form-control" name="idade" v-model="funcionario.idade" max="199"
+						required >
+				</div>
+				<div class="form-group">
+					<a href="../index.html"><button type="button" class="btn btn-primary  ml-2">Voltar</button></a>
+					<button type="button"  disabled="disabled" id="botao" class="btn btn-primary" v-on:click="cadastrarFuncionario()">Adicionar</button>
+					<button type="reset" class="btn btn-secondary" onclick="document.getElementById('formFuncionario').reset();">Novo</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+	<script src="../resources/js/vue.js"></script>
+	<script src="../resources/js/axios.min.js"></script>
+	<script src="../resources/js/cadastro-de-funcionario.js"></script>
+	
+	<script>
+	//so vai poder cadastrar qnd todos dados forem preenchidos
+	function checkInputs(inputs) {
+
+	    var filled = true;
+	  
+	  inputs.forEach(function(input) {
+	    
+	    if(input.value === "") {
+	        filled = false;
+	    }
+	  
+	    });
+	  
+	  return filled;
+	  
+	}
+
+	var inputs = document.querySelectorAll("input");
+	var button = document.getElementById("botao");
+
+	inputs.forEach(function(input) {
+	    
+	  input.addEventListener("keyup", function() {
+
+	    if(checkInputs(inputs)) {
+	      button.disabled = false;
+	    } else {
+	      button.disabled = true;
+	    }
+
+	  });
+
+	});
+	</script>
+	
+</body>
+</html>

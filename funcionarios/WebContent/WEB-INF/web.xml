@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>funcionarios</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>Jersey Servlet</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>com.hepta.funcionarios.rest</param-value>
+		</init-param>
+		<init-param>
+			<param-name>jersey.config.server.provider.classnames</param-name>
+			<param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Jersey Servlet</servlet-name>
+		<url-pattern>/rs/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>novo-funcionario</servlet-name>
+		<jsp-file>/pages/novo-funcionario.html</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>novo-funcionario</servlet-name>
+		<url-pattern>/novo-funcionario</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>editar-funcionario</servlet-name>
+		<jsp-file>/pages/editar-funcionario.html</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>editar-funcionario</servlet-name>
+		<url-pattern>/editar-funcionario</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>

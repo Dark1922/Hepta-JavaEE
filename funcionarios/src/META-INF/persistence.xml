@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="funcionarios-bd">
+        <properties>
+        
+        	<!-- LOCALHOST MYSQL   		-->
+            <property name="javax.persistence.jdbc.url"
+                value="jdbc:mysql://localhost:3306/funcionarios_prova?createDatabaseIfNotExist=true&amp;serverTimezone=America/Sao_Paulo&amp;autoReconnect=true&amp;useSSL=false" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="84353246mv" />
+     
+
+            <!-- DRIVER -->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            
+            <!-- DIALECT -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            
+             <!-- PROPERTIES -->
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" /> 
+            <property name="hibernate.c3p0.min_size" value="5" />
+            <property name="hibernate.c3p0.max_size" value="20" />
+            <property name="hibernate.c3p0.acquire_increment" value="1" />
+            <property name="hibernate.c3p0.idle_test_period" value="3000" />
+            <property name="hibernate.c3p0.max_statements" value="150" />
+            <property name="hibernate.c3p0.timeout" value="1800" />
+        </properties>
+    </persistence-unit>
+</persistence>

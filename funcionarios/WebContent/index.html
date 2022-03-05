@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="favicon.ico"/>
+<title>Funcionários - Início</title>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/bootstrap-vue.css">
+</head>
+
+<body>
+
+	<div id="inicio" class="container-fluid table mt-5" style="text-align:center" >
+		<h4>Lista dos Funcionários</h4>
+		<table class="table">
+		  <tr class="table-light">
+			<th>Nome</th>
+			<th>Setor</th>
+			<th>Salário</th>
+			<th>Email</th>
+			<th>Idade</th>
+			<th>Ações</th>
+			<th></th>
+			<th></th>
+		  </tr>
+		  <tbody id="event-table" >
+			<tr v-for="funcionario in lista">
+			  <td>{{ funcionario.nome }}</td>
+			  <td>{{ funcionario.setor.nome }}</td>
+			  <td>{{ funcionario.salario }}</td>
+			  <td>{{ funcionario.email }}</td>
+			  <td>{{ funcionario.idade }}</td>
+			  <td><span v-on:click="editarItem(funcionario.id)"><button type="button">&#9998;</button></span>
+				<span v-on:click="deletarItem(funcionario.id)"><button type="button" class="mt-1">&#10006;</button></span>
+			  </td>
+			</tr>
+		  </tbody>
+		  
+		</table>
+		<hr class="mb-1">
+		
+		
+</div>
+	  <a  href="pages/novo-funcionario.html"><button type="button" class="btn btn-primary ml-3" >Novo funcionário</button></a>
+	  
+
+	<script src="resources/js/vue.js"></script>
+  	<script src="resources/js/axios.min.js"></script>
+  	<script src="resources/js/index.js"></script>
+
+</body>
+</html>
