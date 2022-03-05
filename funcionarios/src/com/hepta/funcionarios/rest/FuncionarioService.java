@@ -106,26 +106,6 @@ public class FuncionarioService {
 		return Response.status(Status.OK).entity(entity).build();
 	}
 	
-	/**
-	 * Lista os setores para o registro dos setores
-	 * 
-	 * @return response 200 (OK) - Conseguiu listar
-	 */
-	@Path("/setores")
-	@Produces(MediaType.APPLICATION_JSON)
-	@GET
-	public Response SetorRead() {
-		List<Setor> Setores = new ArrayList<>();
-		try {
-			Setores = dao.getAllSetores();
-		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao buscar Setores").build();
-		}
-
-		GenericEntity<List<Setor>> entity = new GenericEntity<List<Setor>>(Setores) {
-		};
-		return Response.status(Status.OK).entity(entity).header("Access-Control-Allow-Origin", "*").build();
-	}
 
 	/**
 	 * Atualiza um Funcionario
@@ -163,6 +143,72 @@ public class FuncionarioService {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao deletar Funcionario.").build();
 		}
 		return Response.status(Status.OK).entity("Funcionario excluido com sucesso.").build();
+	}
+	
+	
+	/*Setores*/
+	
+	@Path("/setores")
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	public Response SetorRead() {
+		List<Setor> Setores = new ArrayList<>();
+		try {
+			Setores = dao.getAllSetores();
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao buscar Setores").build();
+		}
+
+		GenericEntity<List<Setor>> entity = new GenericEntity<List<Setor>>(Setores) {
+		};
+		return Response.status(Status.OK).entity(entity).header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	@Path("/setores/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@PUT
+	public Response SetorUpdate(@PathParam("id") Integer id, Setor setor) {
+		try {
+			dao.updateSetor(setor, id);
+		} catch (Exception e){
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao atualizar setor!").build();
+		}
+		return Response.status(Status.OK).entity("Setor atualizado com sucesso!").build();
+	}
+	
+	
+	
+	@Path("/setores/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	public Response SetorGet(@PathParam("id") Integer id) {
+		Setor setor = new Setor();
+		try {
+			setor = dao.findSetor(id);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao buscar Funcionario").build();
+		}
+
+		GenericEntity<Setor> entity = new GenericEntity<Setor>(setor) {
+		};
+		return Response.status(Status.OK).entity(entity).build();
+	}
+	
+	@Path("/setores")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@POST
+	public Response SetorCreate(Setor setor) {
+		try {
+			
+			dao.saveSetor(setor);
+			
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao inserir setor.").build();
+		}
+		
+		return Response.status(Status.OK).entity(setor).build();
 	}
 
 }

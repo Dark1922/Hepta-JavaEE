@@ -110,5 +110,53 @@ public class FuncionarioDAO {
 		return Setores;
 	}
 	
+	public void saveSetor(Setor setor) throws Exception {
+		EntityManager em = HibernateUtil.getEntityManager();
+		try {
+			em.getTransaction().begin();
+			em.persist(setor);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			throw new Exception(e);
+		} finally {
+			em.close();
+		}
+	}
+
+	public Setor updateSetor(Setor setor, Integer id) throws Exception {
+		EntityManager em = HibernateUtil.getEntityManager();
+		Setor setorAtualizado = null;
+		try {
+			em.getTransaction().begin();
+			if(id != null) {
+				setorAtualizado = em.find(Setor.class, id);
+				setor.setId(id);
+			}
+			 
+			setorAtualizado = em.merge(setor);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			throw new Exception(e);
+		} finally {
+			em.close();
+		}
+		return setorAtualizado;
+	}
+	
+	public Setor findSetor(Integer id) throws Exception {
+		EntityManager em = HibernateUtil.getEntityManager();
+		Setor setor = null;
+		try {
+			setor = em.find(Setor.class, id);
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			throw new Exception(e);
+		} finally {
+			em.close();
+		}
+		return setor;
+	}
 	
 }
